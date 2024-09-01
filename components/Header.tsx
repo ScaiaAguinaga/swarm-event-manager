@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavItems from "./NavItems";
+import MobileNav from "./MobileNav";
 
 export const Header = () => {
   return (
@@ -21,13 +22,16 @@ export const Header = () => {
           <NavItems />
         </nav>
 
+        {/* Sign in and mobile nav */}
         <div className='flex-center gap-3'>
-          {/* Sign Up/Log In */}
+          {/* Sign in button */}
           <div className='flex bg-primary hover:bg-primary-hover py-2 px-3 rounded-full flex-center'>
             Sign In
           </div>
-          {/* Mobile nav bar */}
-          <div className='w-10 h-10 bg-primary md:hidden'></div>
+          {/* Mobile nav */}
+          <div className=' md:hidden'>
+            <MobileNav />
+          </div>
         </div>
       </div>
     </header>
