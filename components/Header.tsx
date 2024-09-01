@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import NavItems from "./NavItems";
 
 export const Header = () => {
   return (
@@ -17,17 +18,17 @@ export const Header = () => {
 
         {/* Nav bar items */}
         <nav className='hidden md:flex-between w-full max-w-xs'>
-          <h1>Link 1</h1>
-          <h1>Link 2</h1>
-          <h1>Link 3</h1>
-          <h1>Link 4</h1>
+          <NavItems />
         </nav>
 
-        {/* Sign Up/Log In */}
-        <h1>Log In</h1>
-
-        {/* Mobile nav bar */}
-        <div className='w-10 h-10 bg-primary md:hidden'></div>
+        <div className='flex-center gap-3'>
+          {/* Sign Up/Log In */}
+          <div className='flex bg-primary hover:bg-primary-hover py-2 px-3 rounded-full flex-center'>
+            Sign In
+          </div>
+          {/* Mobile nav bar */}
+          <div className='w-10 h-10 bg-primary md:hidden'></div>
+        </div>
       </div>
     </header>
   );
