@@ -5,14 +5,14 @@
 @layer utilities {
   /* Max Width of 1280px */
   .wrapper {
-    @apply max-w-7xl p-5 md:px-10 lg:mx-auto xl:px-0 w-full;
+    @apply w-full max-w-7xl p-5 md:px-10 lg:mx-auto xl:px-0;
   }
 
   .flex-center {
-    @apply flex justify-center items-center;
+    @apply flex items-center justify-center;
   }
 
   .flex-between {
-    @apply flex justify-between items-center;
+    @apply flex items-center justify-between;
   }
 }

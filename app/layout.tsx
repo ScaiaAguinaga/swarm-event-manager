@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <SessionWrapper>
-      <html lang='en'>
+      <html lang="en">
         <body className={`${poppins.variable} bg-background-color text-white`}>
           {children}
         </body>
