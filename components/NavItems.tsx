@@ -4,7 +4,7 @@ import { headerLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavItems = () => {
+const NavItems = ({ callback }: { callback: () => void }) => {
   // Gets current route path
   const pathname = usePathname();
 
@@ -18,6 +18,7 @@ const NavItems = () => {
           // Renders active link in primary color
           <li
             key={link.route}
+            onClick={callback}
             className={`${
               isActive ? "text-primary" : "text-white"
             } flex-center`}
