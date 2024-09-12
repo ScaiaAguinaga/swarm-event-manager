@@ -4,7 +4,7 @@ import { headerLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavItems = ({ callback }: { callback: () => void }) => {
+const NavItems = ({ callback }: { callback?: () => void }) => {
   // Gets current route path
   const pathname = usePathname();
 

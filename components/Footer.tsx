@@ -12,6 +12,7 @@ const Footer = () => {
             height={38}
             alt="Swarm Website Logo"
             className="bg-white"
+            style={{ width: "auto", height: "auto" }} // CSS to maintain aspect ratio
           />
         </Link>
         <p>2024 Swarm, All Rights Reserved</p>

@@ -1,20 +1,21 @@
-"use client";
-
 import { IEvent } from "@/lib/mongodb/models/event.model";
 import React, { useState } from "react";
 
-const page = () => {
-  const [eventData, setEventData] = useState<Partial<IEvent>>({
-    title: "Test Event",
-    description: "This is a test to see if my database connection works",
-    location: "Woo Woo",
+const CreateEventForm = () => {
+  const [eventData, setEventData] = useState<IEvent>({
+    _id: "",
+    title: "",
+    description: "",
+    location: "",
     createdAt: new Date(),
-    imageUrl: "imageURL",
+    imageUrl: "",
     startDateTime: new Date(),
     endDateTime: new Date(),
-    price: "$15.00",
+    price: "",
     isFree: false,
-    url: "eventURL",
+    url: "",
+    // category: { _id: string; name: string };
+    // organizer: { _id: string; name: string };
   });
 
   const handleClick = async () => {
@@ -38,4 +39,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CreateEventForm;

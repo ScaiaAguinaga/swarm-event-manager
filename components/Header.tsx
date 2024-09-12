@@ -19,6 +19,7 @@ export const Header = () => {
             height={38}
             alt="Swarm Website Logo"
             className="bg-white"
+            style={{ width: "auto", height: "auto" }} // CSS to maintain aspect ratio
           />
         </Link>
 
@@ -26,7 +27,7 @@ export const Header = () => {
         <nav className="md:flex-between hidden w-full max-w-xs">
           <NavItems />
         </nav>
-        <div className="flex justify-end gap-x-4 md:w-20 items-center">
+        <div className="flex items-center justify-end gap-x-4 md:w-20">
           {/* Login and profile for tablet+ */}
           <HeaderProfile />
           {/* Mobile navigation bar */}
