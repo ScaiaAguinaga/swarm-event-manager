@@ -5,15 +5,15 @@ import { useState } from "react";
 
 const CreateEventForm = () => {
   const [eventData, setEventData] = useState<Partial<IEvent>>({
-    title: "Test Event",
-    description: "This is a test to see if my database connection works",
-    location: "Woo Woo",
-    imageUrl: "imageURL",
+    title: "Test Event", //Required
+    description: "Test Description",
+    location: "Test Location",
+    imageUrl: "TestImageURL", //Required
     startDateTime: new Date(),
     endDateTime: new Date(),
-    price: "$15.00",
+    price: "10.00",
     isFree: false,
-    url: "eventURL",
+    url: "TestEventURL",
   });
 
   const handleClick = async () => {
@@ -41,8 +41,9 @@ const CreateEventForm = () => {
           <input
             id="event-title"
             type="text"
-            placeholder="Title"
-            className="event-form-input w-[175px] md:w-[300px]"
+            placeholder="Event Name"
+            value={eventData.title}
+            className="event-form-input w-[250px] md:w-[400px]"
             onChange={(e) =>
               setEventData({ ...eventData, title: e.target.value })
             }
@@ -55,7 +56,8 @@ const CreateEventForm = () => {
           </label>
           <textarea
             id="event-description"
-            placeholder="Description"
+            placeholder="Please enter a description for your event."
+            value={eventData.description}
             className="event-form-input h-[150px] w-[250px] md:h-[200px] md:w-[400px]"
             onChange={(e) =>
               setEventData({ ...eventData, description: e.target.value })
@@ -70,8 +72,9 @@ const CreateEventForm = () => {
           <input
             id="event-location"
             type="text"
-            placeholder="Location"
-            className="event-form-input w-[175px] md:w-[300px]"
+            placeholder="123 World Way, CA"
+            value={eventData.location}
+            className="event-form-input w-[250px] md:w-[400px]"
             onChange={(e) =>
               setEventData({ ...eventData, location: e.target.value })
             }
@@ -92,11 +95,13 @@ const CreateEventForm = () => {
           <input
             id="event-start-date"
             type="date"
-            placeholder="Start Date"
             className="event-form-input w-[175px] md:w-[300px]"
-            // onChange={(e) =>
-            //   setEventData({ ...eventData, location: e.target.value })
-            // }
+            onChange={(e) =>
+              setEventData({
+                ...eventData,
+                startDateTime: new Date(e.target.value),
+              })
+            }
           />
         </div>
 
@@ -107,11 +112,13 @@ const CreateEventForm = () => {
           <input
             id="event-end-date"
             type="date"
-            placeholder="End Date"
             className="event-form-input w-[175px] md:w-[300px]"
-            // onChange={(e) =>
-            //   setEventData({ ...eventData, location: e.target.value })
-            // }
+            onChange={(e) =>
+              setEventData({
+                ...eventData,
+                endDateTime: new Date(e.target.value),
+              })
+            }
           />
         </div>
 
@@ -123,9 +130,10 @@ const CreateEventForm = () => {
             id="event-price"
             type="number"
             placeholder="Price"
+            value={Number(eventData.price).toFixed(2)}
             className="event-form-input w-[175px] md:w-[300px]"
             onChange={(e) =>
-              setEventData({ ...eventData, price: e.target.value })
+              setEventData({ ...eventData, price: e.target.value.toString() })
             }
           />
         </div>
