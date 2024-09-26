@@ -5,31 +5,30 @@ import NavItems from "./NavItems";
 import { FiMenu } from "react-icons/fi";
 
 const MobileNav = () => {
-  const [isNavActive, setIsNavActive] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleIsActive = () => {
-    const active: boolean = isNavActive;
-    setIsNavActive(!active);
+    const active: boolean = isActive;
+    setIsActive(!active);
   };
 
   const handleNavClick = () => {
-    setIsNavActive(false);
+    setIsActive(false);
   };
 
   return (
-    <div>
+    <div className="relative">
       {/* Mobile nav hamburger icon */}
       <FiMenu
         onClick={toggleIsActive}
-        className={`h-8 w-8 ${isNavActive ? "text-primary" : "text-white"} relative z-10`}
+        className={`h-8 w-8 ${isActive ? "text-primary" : "text-white"} relative z-10`}
       />
 
       {/* If mobile nav is active, display nav items */}
-      {isNavActive && (
-        <div className="absolute left-0 top-0 z-0 flex h-screen w-screen flex-col bg-background-color">
-          <div className="flex flex-grow flex-col items-center justify-center pb-40">
-            <h1 className="mb-10 text-3xl font-bold">Swarm</h1>
-            <NavItems callback={handleNavClick} />
+      {isActive && (
+        <div className="absolute right-0 top-10">
+          <div className="text-nowrap rounded-[20px] border-2 border-base bg-background-color p-4">
+            <NavItems callback={toggleIsActive} />
           </div>
         </div>
       )}

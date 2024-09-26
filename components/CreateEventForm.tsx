@@ -5,20 +5,27 @@ import { useState } from "react";
 
 const CreateEventForm = () => {
   const [eventData, setEventData] = useState<Partial<IEvent>>({
-    title: "Test Event", //Required
-    description: "Test Description",
-    location: "Test Location",
-    imageUrl: "TestImageURL", //Required
+    title: "", // Required
+    description: "",
+    location: "",
+    imageUrl: "",
     startDateTime: new Date(),
     endDateTime: new Date(),
-    price: "10.00",
+    price: "",
     isFree: false,
-    url: "TestEventURL",
+    url: "",
+    // category: { type: Schema.Types.ObjectId, ref: "Category" },
+    // organizer: { type: Schema.Types.ObjectId, ref: "Organizer" },
   });
 
   const handleClick = async () => {
     try {
-      const response = await fetch("/api/events", {
+      // Check for a valid title
+      if (!eventData.title || eventData.title.trim() === "") {
+        throw new Error("Title Missing");
+      }
+
+      await fetch("/api/events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Inform the server about the content type
@@ -26,7 +33,7 @@ const CreateEventForm = () => {
         body: JSON.stringify(eventData),
       });
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     }
   };
 
@@ -50,93 +57,9 @@ const CreateEventForm = () => {
           />
         </div>
 
-        <div className="col-span-2 flex flex-col">
-          <label htmlFor="event-description" className="event-form-label">
-            Description
-          </label>
-          <textarea
-            id="event-description"
-            placeholder="Please enter a description for your event."
-            value={eventData.description}
-            className="event-form-input h-[150px] w-[250px] md:h-[200px] md:w-[400px]"
-            onChange={(e) =>
-              setEventData({ ...eventData, description: e.target.value })
-            }
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="event-location" className="event-form-label">
-            Location
-          </label>
-          <input
-            id="event-location"
-            type="text"
-            placeholder="123 World Way, CA"
-            value={eventData.location}
-            className="event-form-input w-[250px] md:w-[400px]"
-            onChange={(e) =>
-              setEventData({ ...eventData, location: e.target.value })
-            }
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="event-image" className="event-form-label">
-            Image
-          </label>
-          <input id="event-image" type="file" className="pt-[3px]" />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="event-start-date" className="event-form-label">
-            Start Date
-          </label>
-          <input
-            id="event-start-date"
-            type="date"
-            className="event-form-input w-[175px] md:w-[300px]"
-            onChange={(e) =>
-              setEventData({
-                ...eventData,
-                startDateTime: new Date(e.target.value),
-              })
-            }
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="event-end-date" className="event-form-label">
-            End Date
-          </label>
-          <input
-            id="event-end-date"
-            type="date"
-            className="event-form-input w-[175px] md:w-[300px]"
-            onChange={(e) =>
-              setEventData({
-                ...eventData,
-                endDateTime: new Date(e.target.value),
-              })
-            }
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="event-price" className="event-form-label">
-            Price
-          </label>
-          <input
-            id="event-price"
-            type="number"
-            placeholder="Price"
-            value={Number(eventData.price).toFixed(2)}
-            className="event-form-input w-[175px] md:w-[300px]"
-            onChange={(e) =>
-              setEventData({ ...eventData, price: e.target.value.toString() })
-            }
-          />
-        </div>
+        <label>
+          <input />
+        </label>
       </form>
 
       {/* Temp Submit Button */}

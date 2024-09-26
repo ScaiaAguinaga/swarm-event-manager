@@ -7,7 +7,12 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const HeaderProfile = () => {
   const { data: session } = useSession();
 
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const toggleIsActive = () => {
+    const active: boolean = isActive;
+    setIsActive(!active);
+  };
 
   return (
     <div>
@@ -18,14 +23,11 @@ const HeaderProfile = () => {
             width={35}
             height={35}
             alt="profile picture"
-            onClick={() => {
-              const state = isPopupVisible;
-              setIsPopupVisible(!state);
-            }}
+            onClick={toggleIsActive}
             className="rounded-full"
           />
-          {isPopupVisible && (
-            <div className="absolute right-[-40px] top-10 flex flex-col items-center rounded-[20px] border-2 border-base bg-background-color p-4 md:right-6 md:top-8">
+          {isActive && (
+            <div className="absolute right-0 top-10 flex flex-col items-center rounded-[20px] border-2 border-base bg-background-color p-4">
               <h1 className="text-center text-xl">{session.user?.name}</h1>
               <p className="overflow-hidden text-center text-xl text-gray-400">
                 {session.user?.email}

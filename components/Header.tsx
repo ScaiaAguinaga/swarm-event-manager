@@ -5,8 +5,11 @@ import Link from "next/link";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import HeaderProfile from "./HeaderProfile";
+import { useSession } from "next-auth/react";
 
 export const Header = () => {
+  const { data: session } = useSession();
+
   return (
     <header className="w-full border-b border-base">
       {/* Header content */}
@@ -27,10 +30,12 @@ export const Header = () => {
         <nav className="md:flex-between hidden w-full max-w-xs">
           <NavItems />
         </nav>
+
+        {/* Login and mobile nav menu */}
         <div className="flex items-center justify-end gap-x-4 md:w-20">
-          {/* Login and profile for tablet+ */}
+          {/* Login and Logout for larger screens */}
           <HeaderProfile />
-          {/* Mobile navigation bar */}
+          {/* Mobile nav bar */}
           <div className="md:hidden">
             <MobileNav />
           </div>

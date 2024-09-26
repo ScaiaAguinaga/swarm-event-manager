@@ -17,10 +17,26 @@
   }
 
   .event-form-label {
-    @apply pb-1 text-4xl;
+    @apply pb-1 text-2xl;
   }
 
   .event-form-input {
-    @apply rounded-lg border-[3px] border-gray-500 px-2 py-[2px] text-2xl text-black focus:outline-primary;
+    @apply rounded-lg border-[3px] border-gray-500 px-2 py-[2px] text-xl text-black focus:outline-primary;
+  }
+
+  h1 {
+    @apply text-[28px] sm:text-[32px];
+  }
+
+  h2 {
+    @apply text-[18px] sm:text-[20px];
+  }
+
+  /* h3 {
+    @apply text-[16px] sm:text-[18px];
+  } */
+
+  p {
+    @apply text-[14px] sm:text-[16px];
   }
 }
