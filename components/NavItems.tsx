@@ -9,7 +9,7 @@ const NavItems = ({ callback }: { callback?: () => void }) => {
   const pathname = usePathname();
 
   return (
-    <ul className="flex-center md:flex-between flex w-full flex-col gap-x-5 md:flex-row gap-y-1">
+    <ul className="flex-center flex-between flex w-full flex-col gap-x-5 gap-y-2 md:flex-row">
       {headerLinks.map((link) => {
         // Determines if the link is active based on pathname
         const isActive: boolean = link.route === pathname;
@@ -21,7 +21,7 @@ const NavItems = ({ callback }: { callback?: () => void }) => {
             onClick={callback}
             className={`${
               isActive ? "text-primary" : "text-white"
-            } flex-center`}
+            } md:flex-center text-left font-semibold`}
           >
             <h2>
               <Link href={link.route}>{link.label}</Link>

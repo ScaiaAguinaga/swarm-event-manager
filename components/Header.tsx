@@ -1,21 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import NavItems from "./NavItems";
-import MobileNav from "./MobileNav";
-import HeaderProfile from "./HeaderProfile";
-import { useSession } from "next-auth/react";
+import AuthNav from "./AuthNav";
 
 export const Header = () => {
-  const { data: session } = useSession();
-
   return (
     <header className="w-full border-b border-base">
       {/* Header content */}
       <div className="wrapper flex h-20 items-center justify-between">
         {/* Logo link that redirects to landing page */}
-        <Link href="/">
+        <Link href="/" className="w-[115px]">
           <Image
             src="/assets/icons/logo-placeholder-small.svg"
             width={74}
@@ -31,14 +25,8 @@ export const Header = () => {
           <NavItems />
         </nav>
 
-        {/* Login and mobile nav menu */}
-        <div className="flex items-center justify-end gap-x-4 md:w-20">
-          {/* Login and Logout for larger screens */}
-          <HeaderProfile />
-          {/* Mobile nav bar */}
-          <div className="md:hidden">
-            <MobileNav />
-          </div>
+        <div className="w-[115px]">
+          <AuthNav />
         </div>
       </div>
     </header>

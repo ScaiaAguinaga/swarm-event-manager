@@ -32,9 +32,9 @@
     @apply text-[18px] sm:text-[20px];
   }
 
-  /* h3 {
+  h3 {
     @apply text-[16px] sm:text-[18px];
-  } */
+  }
 
   p {
     @apply text-[14px] sm:text-[16px];
