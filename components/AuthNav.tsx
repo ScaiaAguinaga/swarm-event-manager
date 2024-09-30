@@ -11,7 +11,7 @@ const AuthNav = () => {
   const { data: session } = useSession();
   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = () => {
+  const toggleMenu = () => {
     const curr = isActive;
     setIsActive(!curr);
   };
@@ -32,7 +32,7 @@ const AuthNav = () => {
       <div className="relative flex">
         {/* Only display hamburger menu on screens < md size */}
         {/* Always display profile image if signed in */}
-        <div onClick={handleClick}>
+        <div onClick={toggleMenu}>
           {!session ? (
             <FiMenu className={`flex h-8 w-8 md:hidden`} />
           ) : (
@@ -61,7 +61,7 @@ const AuthNav = () => {
             <div className="flex flex-col justify-center md:flex-row">
               {/* Display nav items on screens < md size */}
               <div className="flex md:hidden">
-                <NavItems />
+                <NavItems callback={toggleMenu} />
               </div>
 
               {/* Sign out button */}

@@ -17,11 +17,11 @@
   }
 
   .event-form-label {
-    @apply pb-1 text-2xl;
+    @apply text-[18px] font-semibold sm:text-[20px];
   }
 
   .event-form-input {
-    @apply rounded-lg border-[3px] border-gray-500 px-2 py-[2px] text-xl text-black focus:outline-primary;
+    @apply min-h-10 rounded-lg border-[3px] border-gray-500 px-2 pb-[2px] text-[14px] text-black outline-none focus:border-primary sm:text-[16px];
   }
 
   h1 {

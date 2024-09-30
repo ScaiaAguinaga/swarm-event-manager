@@ -25,6 +25,7 @@ export const Header = () => {
           <NavItems />
         </nav>
 
+        {/* User profile and mobile nav menu */}
         <div className="w-[115px]">
           <AuthNav />
         </div>
